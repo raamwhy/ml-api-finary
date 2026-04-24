@@ -1,0 +1,114 @@
+{
+  "model_name": "finary_classification_residual_mlp",
+  "target_mapping": {
+    "0": "inflation",
+    "1": "normal",
+    "2": "recession"
+  },
+  "feature_count": 42,
+  "feature_columns": [
+    "monthly_income",
+    "monthly_expense_total",
+    "savings_rate",
+    "budget_goal",
+    "credit_score",
+    "debt_to_income_ratio",
+    "loan_payment",
+    "investment_amount",
+    "subscription_services",
+    "emergency_fund",
+    "transaction_count",
+    "fraud_flag",
+    "discretionary_spending",
+    "essential_spending",
+    "rent_or_mortgage",
+    "financial_advice_score",
+    "actual_savings",
+    "savings_goal_met",
+    "net_cash_flow",
+    "expense_ratio",
+    "debt_pressure",
+    "financial_buffer",
+    "saving_behavior",
+    "spending_efficiency",
+    "lifestyle_burden",
+    "debt_ratio_flag",
+    "low_emergency_flag",
+    "income_type_Mixed",
+    "income_type_Salary",
+    "category_Education",
+    "category_Entertainment",
+    "category_Groceries",
+    "category_Healthcare",
+    "category_Insurance",
+    "category_Investments",
+    "category_Rent",
+    "category_Transportation",
+    "category_Utilities",
+    "cash_flow_status_Neutral",
+    "cash_flow_status_Positive",
+    "financial_stress_level_Low",
+    "financial_stress_level_Medium"
+  ],
+  "class_distribution": {
+    "train": {
+      "0": 454,
+      "1": 1217,
+      "2": 429
+    },
+    "val": {
+      "0": 97,
+      "1": 261,
+      "2": 92
+    },
+    "test": {
+      "0": 97,
+      "1": 261,
+      "2": 92
+    }
+  },
+  "majority_baseline_accuracy": 0.58,
+  "train_accuracy": 0.5357142857142857,
+  "val_accuracy": 0.5222222222222223,
+  "test_accuracy": 0.5333333333333333,
+  "macro_f1": 0.2770109869252473,
+  "weighted_f1": 0.4355599608827163,
+  "per_class_precision": {
+    "0": 0.2857142857142857,
+    "1": 0.5858585858585859,
+    "2": 0.1276595744680851
+  },
+  "per_class_recall": {
+    "0": 0.020618556701030927,
+    "1": 0.8888888888888888,
+    "2": 0.06521739130434782
+  },
+  "per_class_f1": {
+    "0": 0.038461538461538464,
+    "1": 0.7062404870624048,
+    "2": 0.08633093525179857
+  },
+  "confusion_matrix": [
+    [
+      2,
+      79,
+      16
+    ],
+    [
+      4,
+      232,
+      25
+    ],
+    [
+      1,
+      85,
+      6
+    ]
+  ],
+  "loss_function": "weighted_categorical_crossentropy(class_weight)",
+  "optimizer": "Adam(clipnorm=CLIP_NORM)",
+  "epochs_trained": 16,
+  "best_epoch": 1,
+  "tensorboard_log_dir": null,
+  "notes": "TensorBoard logging dinonaktifkan. Early stopping berbasis val_macro_f1 + restore best weights."
+}
