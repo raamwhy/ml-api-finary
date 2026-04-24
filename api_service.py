@@ -115,7 +115,7 @@ def predict(payload: PredictRequest) -> PredictResponse:
 
         pred_balance_norm, pred_warning_prob = MODEL.predict(row_scaled, verbose=0)
         
-        pred_balance_norm_val = float(np.clip(pred_balance_norm[0][0], 0.0, 1.0))
+        pred_balance_norm_val = float(np.clip(pred_balance_norm[0][0], 0.0, None)) # Ganti None
         pred_warning_prob_val = float(np.clip(pred_warning_prob[0][0], 0.0, 1.0))
 
         predicted_balance_idr = (pred_balance_norm_val * (BALANCE_MAX - BALANCE_MIN) + BALANCE_MIN) * UNIT_SCALE
