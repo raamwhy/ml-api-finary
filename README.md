@@ -16,4 +16,4 @@ Sistem ini menggunakan arsitektur Hybrid (Deep Learning Multi-Output + Rule-Base
 
 ## 🛠️ Tech Stack
 - **Machine Learning:** TensorFlow 2.x, Scikit-Learn, Pandas, NumPy
-- **API Framework:** FastAPI, Uvicorn, Pydantic
+- **API Framework:** FastAPI, Uvicorn, Pydantic.
