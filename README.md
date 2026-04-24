@@ -83,3 +83,23 @@ FastAPI digunakan sebagai **ML Inference API** karena:
   "risk_level": "Waspada",
   "recommendation": "Kurangi pengeluaran hiburan sebesar 20% untuk menjaga stabilitas saldo."
 }
+```
+
+---
+
+## ▶️ Menjalankan API
+
+```bash
+uvicorn api_service:app --reload
+```
+
+## 🔌 Endpoints (urut konsisten)
+
+### 1) `POST /classify`
+Klasifikasi macro-scenario finansial: `inflation` / `normal` / `recession`.
+
+### 2) `POST /predict`
+Prediksi saldo bulan depan + warning + rekomendasi (Insight model).
+
+### 3) `POST /recommend-side-hustle`
+Rekomendasi side-hustle (7 rekomendasi).
