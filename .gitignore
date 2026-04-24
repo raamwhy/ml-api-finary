@@ -3,9 +3,7 @@
 venv/
 env/
 
-# Dataset & Notebook
-*.csv
-*.ipynb
+
 
 # Python Cache & OS Files
 __pycache__/
