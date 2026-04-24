@@ -4,7 +4,6 @@ venv/
 env/
 
 
-
 # Python Cache & OS Files
 __pycache__/
 *.pyc
