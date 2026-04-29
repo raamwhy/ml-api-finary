@@ -1,0 +1,166 @@
+{
+  "model_name": "finary_classification_residual_mlp",
+  "dataset_name": "FINARY_MONTHLY_CONDITION_DATASET.csv",
+  "target_column": "monthly_financial_condition",
+  "label_mapping": {
+    "0": "survival",
+    "1": "stable",
+    "2": "growth"
+  },
+  "feature_count": 27,
+  "feature_columns": [
+    "saving_behavior",
+    "expense_ratio",
+    "actual_savings",
+    "net_cash_flow",
+    "monthly_income",
+    "monthly_expense_total",
+    "lifestyle_burden",
+    "savings_goal_met",
+    "spending_efficiency",
+    "financial_buffer",
+    "discretionary_spending",
+    "budget_goal",
+    "savings_rate",
+    "rent_or_mortgage",
+    "debt_pressure",
+    "emergency_fund",
+    "category_Education",
+    "financial_advice_score",
+    "credit_score",
+    "category_Entertainment",
+    "investment_amount",
+    "loan_payment",
+    "subscription_services",
+    "category_Transportation",
+    "financial_stress_level_Medium",
+    "fraud_flag",
+    "transaction_count"
+  ],
+  "feature_selection": {
+    "initial_feature_count": 42,
+    "after_numeric_filter_count": 42,
+    "constant_dropped_count": 0,
+    "constant_dropped": [],
+    "corr_threshold": 0.98,
+    "corr_dropped_count": 0,
+    "corr_dropped": [],
+    "selected_count": 27,
+    "selected_feature_columns": [
+      "saving_behavior",
+      "expense_ratio",
+      "actual_savings",
+      "net_cash_flow",
+      "monthly_income",
+      "monthly_expense_total",
+      "lifestyle_burden",
+      "savings_goal_met",
+      "spending_efficiency",
+      "financial_buffer",
+      "discretionary_spending",
+      "budget_goal",
+      "savings_rate",
+      "rent_or_mortgage",
+      "debt_pressure",
+      "emergency_fund",
+      "category_Education",
+      "financial_advice_score",
+      "credit_score",
+      "category_Entertainment",
+      "investment_amount",
+      "loan_payment",
+      "subscription_services",
+      "category_Transportation",
+      "financial_stress_level_Medium",
+      "fraud_flag",
+      "transaction_count"
+    ],
+    "selection_method": "MI + ExtraTrees rank aggregation on train split"
+  },
+  "class_distribution": {
+    "train": {
+      "0": {
+        "count": 456,
+        "pct": 21.71
+      },
+      "1": {
+        "count": 306,
+        "pct": 14.57
+      },
+      "2": {
+        "count": 1338,
+        "pct": 63.71
+      }
+    },
+    "val": {
+      "0": {
+        "count": 97,
+        "pct": 21.56
+      },
+      "1": {
+        "count": 66,
+        "pct": 14.67
+      },
+      "2": {
+        "count": 287,
+        "pct": 63.78
+      }
+    },
+    "test": {
+      "0": {
+        "count": 98,
+        "pct": 21.78
+      },
+      "1": {
+        "count": 66,
+        "pct": 14.67
+      },
+      "2": {
+        "count": 286,
+        "pct": 63.56
+      }
+    }
+  },
+  "train_accuracy": 0.9719047619047619,
+  "val_accuracy": 0.9644444444444444,
+  "test_accuracy": 0.9555555555555556,
+  "macro_f1": 0.9385050293023735,
+  "weighted_f1": 0.9569489812250294,
+  "per_class_precision": {
+    "0": 0.9702970297029703,
+    "1": 0.7948717948717948,
+    "2": 0.996309963099631
+  },
+  "per_class_recall": {
+    "0": 1.0,
+    "1": 0.9393939393939394,
+    "2": 0.9440559440559441
+  },
+  "per_class_f1": {
+    "0": 0.9849246231155779,
+    "1": 0.8611111111111112,
+    "2": 0.9694793536804309
+  },
+  "confusion_matrix": [
+    [
+      98,
+      0,
+      0
+    ],
+    [
+      3,
+      62,
+      1
+    ],
+    [
+      0,
+      16,
+      270
+    ]
+  ],
+  "loss_function": "weighted_categorical_crossentropy(class_weight)",
+  "optimizer": "AdamW",
+  "epochs_trained": 32,
+  "best_epoch": 12,
+  "notes": "Custom GradientTape training loop + custom residual block + seleksi fitur otomatis."
+}

@@ -83,3 +83,52 @@ FastAPI digunakan sebagai **ML Inference API** karena:
   "risk_level": "Waspada",
   "recommendation": "Kurangi pengeluaran hiburan sebesar 20% untuk menjaga stabilitas saldo."
 }
+```
+
+---
+
+## ▶️ Menjalankan API
+
+```bash
+uvicorn api_service:app --reload
+```
+
+## 🔌 Endpoints (urut konsisten)
+
+### 1) `POST /classify`
+Klasifikasi kondisi keuangan bulanan: `survival` / `stable` / `growth`.
+
+- **Kontrak input (ringkas)**:
+  - **Wajib (IDR)**: `monthly_income`, `monthly_expense_total`, `actual_savings`, `emergency_fund`, `budget_goal`
+  - **Opsional**: `credit_score`, `loan_payment`, `investment_amount`, `subscription_services`, `transaction_count`,
+    `rent_or_mortgage`, `discretionary_spending`, `essential_spending`, `main_category`, `fraud_flag`, `debt_to_income_ratio`
+- **Catatan penting**:
+  - Input uang di API selalu **IDR**.
+  - Sebelum masuk scaler + model, nilai uang dikonversi ke skala training dengan \( \text{nilai\_training} = \text{IDR} / 2500 \).
+  - Jika `discretionary_spending` / `essential_spending` tidak tersedia, API akan mengaproksimasi dari total pengeluaran (30%/70%).
+
+### 2) `POST /predict`
+Prediksi saldo bulan depan + warning + rekomendasi (Insight model).
+
+### 3) `POST /recommend-side-hustle`
+Rekomendasi side-hustle (7 rekomendasi).
+
+---
+
+## 📓 Notebook Penting
+
+### `finary_classify_model.ipynb`
+Notebook untuk training model klasifikasi final (`survival/stable/growth`) dan ekspor artifact:
+- `artifacts/classification_model.keras`
+- `artifacts/classification_scaler.joblib`
+- `artifacts/classification_feature_columns.json`
+- `artifacts/classification_label_mapping.json`
+
+Notebook ini juga mendefinisikan **kontrak inference** yang dipakai produksi:
+- Input user **IDR minimal** (sebagian fitur dihitung otomatis/engineered)
+- Normalisasi uang menggunakan `UNIT_SCALE = 2500`
+
+### `api_service.py` (bagian `/classify`)
+Endpoint `/classify` sudah disesuaikan mengikuti metode inference minimal pada notebook:
+- Menghitung fitur turunan secara otomatis (mis. `net_cash_flow`, `expense_ratio`, `financial_buffer`, dll)
+- Mapping fitur mengikuti schema 27 fitur hasil seleksi (sesuai `classification_feature_columns.json`)
